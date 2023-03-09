@@ -1,0 +1,49 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    overflow: overlay;
+    background-color: var(--primary-bg);
+    transition: .3s;
+}
+
+
+body {
+    --primary-bg: rgb(245, 245, 245);
+    --card-bg: rgb(255, 255, 255);
+    --text-color: rgb(0, 0, 0);
+    --gretext-color: rgb(146, 146, 146);
+    --secondary-bg: rgb(255, 255, 255);
+
+}
+
+body.dark {
+    --primary-bg: #121212;
+    --card-bg: #1a1a1a;
+    --text-color: rgb(230, 230, 230);
+    --greytext-color: rgb(175, 175, 175);
+    --secondary-bg: #161616;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0c0c0c;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0f0f0f;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

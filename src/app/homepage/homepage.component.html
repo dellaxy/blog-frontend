@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row article" *ngFor="let article of articles | slice:0:5">
+        <div class="bg">
+            <img src="assets/images/{{article.image}}" alt="" class="bg-img">
+        </div>
+        <div class="col-lg-5 col-md-6 thumbnail-wrapper">
+            <div class="thumbnail" routerLink="/articles/article/{{article.id}}">
+                <img src="assets/images/{{article.image}}" alt="" class="img">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-5 text-wrapper">
+            <div class="date">
+                <strong>{{article.date | date: "dd/MM"}}</strong> {{article.category}}
+            </div>
+            <div class="article-title">
+                <p>{{article.title}}</p>
+            </div>
+            <div class="lead-p">
+                <p>{{article.leadParagraph}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+.container {
+    color: var(--text-color);
+    transition: .3s;
+}
+
+.thumbnail {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.jumbotron {
+    background-color: var(--secondary-bg);
+    padding: 30px 65px;
+    transition: .1s;
+}
+
+.article-body {
+    background-color: var(--secondary-bg);
+    padding: 0px 80px;
+    padding-bottom: 30px;
+    transition: .1s;
+}
+
+.title {
+    font-size: 2.5em;
+}
+
+.lead {
+    margin-top: 25px;
+}
+
+@media screen and (max-width: 767px) {
+    .article-body {
+        padding: 0px 15px;
+    }
+
+    .jumbotron {
+        padding: 30px 0px;
+    }
+
+    .thumbnail {
+        margin-top: 10px;
+        height: 300px;
+    }
+}

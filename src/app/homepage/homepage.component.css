@@ -1,0 +1,171 @@
+.article {
+    padding: 1.5em 2em;
+    position: relative;
+    overflow: hidden;
+    transition: .5s;
+    z-index: 2;
+}
+
+.thumbnail {
+    cursor: pointer;
+    transition: transform .5s;
+    overflow: hidden;
+    height: 320px;
+}
+
+.thumbnail img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+
+.bg {
+    position: absolute;
+    display: flex;
+    z-index: -1;
+    filter: blur(12px) brightness(70%);
+    transform: scale(1.3);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.bg-img {
+    padding: 0;
+    object-fit: cover;
+    width: 100vw;
+    overflow: hidden;
+
+}
+
+.text-wrapper {
+    font-size: 1.8vw;
+    color: white;
+    margin-left: 1.2rem;
+}
+
+.date {
+    font-weight: 400;
+    font-size: 1em;
+    margin-bottom: .4em;
+}
+
+.article-title {
+    font-weight: 700;
+    letter-spacing: .01em;
+    line-height: 1.2;
+    font-size: 2em;
+}
+
+.lead-p {
+    margin-top: 1.2em;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+
+@media screen and (min-width: 1500px) {
+
+    .article {
+        padding: 2.5em 6em 2.5em 6em;
+    }
+
+    .date {
+        margin-bottom: 2em;
+    }
+
+    .text-wrapper {
+        font-size: 1.2vw;
+        margin-left: 2.8rem;
+    }
+
+    .thumbnail {
+        height: 380px;
+    }
+
+    .date {
+        margin-bottom: 2vh;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .article {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .text-wrapper {
+        order: 1;
+        margin-bottom: 1.2em;
+        margin-left: 0em;
+        font-size: 2.2vw;
+    }
+
+    .lead-p {
+        font-size: 1.4em;
+    }
+
+
+    .thumbnail-wrapper {
+        order: 2;
+    }
+
+
+    .bg {
+        transform: scale(1.4);
+    }
+
+    .thumbnail {
+        height: 320px;
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .text-wrapper {
+        font-size: 3.2vw;
+    }
+
+    .article-title {
+        font-size: 2em;
+    }
+
+    .date {
+        margin-bottom: .8em;
+        font-size: 1.3em;
+    }
+
+    .article {
+        padding: 1.5em .5em;
+    }
+
+    .thumbnail {
+        height: 220px;
+        border-radius: 1%;
+    }
+
+}
+
+@media screen and (max-width:320px) {
+    .text-wrapper {
+        font-size: 4vw;
+    }
+
+    .date {
+        margin-bottom: .2em;
+    }
+
+    .article {
+        padding: 1.5em 0.3em;
+    }
+
+    .thumbnail {
+        height: 150px;
+    }
+
+}
