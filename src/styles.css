@@ -13,7 +13,9 @@ body {
     --text-color: rgb(0, 0, 0);
     --gretext-color: rgb(146, 146, 146);
     --secondary-bg: rgb(255, 255, 255);
-
+    --border-color: rgb(230, 230, 230);
+    --selected-color: rgb(221, 221, 221);
+    --disabled-color: rgb(180, 180, 180);
 }
 
 body.dark {
@@ -22,6 +24,9 @@ body.dark {
     --text-color: rgb(230, 230, 230);
     --greytext-color: rgb(175, 175, 175);
     --secondary-bg: #161616;
+    --border-color: #222222;
+    --selected-color: #0f0f0f;
+    --disabled-color: rgb(73, 73, 73);
 }
 
 ::-webkit-scrollbar {

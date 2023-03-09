@@ -1,5 +1,5 @@
 <div id="articles-container" class="container-fluid">
-    <div class="row row-cols-1 row-cols-sm-2  row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+    <div class="row row-cols-1 row-cols-sm-2  row-cols-md-2 row-cols-lg-2 row-cols-xl-4">
         <div class="col" *ngFor="let article of articles">
             <div class="card" routerLink="/articles/article/{{article.id}}">
                 <img class="card-img-top" src="assets/images/{{article.image}}" alt="Card image cap">
@@ -17,3 +17,19 @@
             </div>
         </div>
     </div>
+    <div class="pagination-wrapper">
+        <ul class="pagination">
+            <li class="page-item"><button class="page-link" [disabled]="currentPage === 1"
+                    (click)="getArticlesPerPage(currentPage-1)">&laquo;</button></li>
+
+            <li class="page-item" [ngClass]="{'active': currentPage == pageIndex+1}"
+                *ngFor="let page of [].constructor(totalPages); let pageIndex = index">
+                <button class="page-link" (click)="getArticlesPerPage(pageIndex+1)">{{pageIndex+1}}</button>
+            </li>
+
+            <li class="page-item"><button class="page-link" [disabled]="currentPage === totalPages"
+                    (click)="getArticlesPerPage(currentPage+1)">&raquo;</button>
+            </li>
+        </ul>
+    </div>
+</div>

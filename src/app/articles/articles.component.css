@@ -4,11 +4,10 @@
     color: var(--text-color);
 }
 
-
 .card {
     background-color: var(--card-bg);
     margin-bottom: 2em;
-    border-radius: .6em;
+    border-radius: .1em;
     box-shadow: rgba(17, 12, 46, 0.10) 0px 5px 10px 0px;
     border: 0;
     cursor: pointer;
@@ -16,7 +15,6 @@
     user-select: none;
     overflow: hidden;
 }
-
 
 .category-date {
     display: flex;
@@ -31,7 +29,6 @@
     font-weight: 500;
 }
 
-
 .card-img-top {
     border-radius: 0;
     object-fit: cover;
@@ -39,6 +36,27 @@
     image-rendering: auto;
 }
 
+.page-item {
+    cursor: pointer;
+    user-select: none;
+    border-radius: 0%;
+}
+
+.page-link {
+    box-shadow: none !important;
+    color: var(--text-color);
+    background-color: var(--secondary-bg);
+    border-color: var(--border-color);
+}
+
+.page-item.active .page-link {
+    background-color: var(--selected-color);
+    transition: .3s;
+}
+
+.page-link:disabled {
+    color: var(--disabled-color);
+}
 
 @media screen and (min-width: 575px) {
     .card {

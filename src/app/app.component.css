@@ -28,11 +28,15 @@
     color: white;
     cursor: pointer;
     transition: .5s;
-    opacity: 70%;
+    opacity: 100%;
     text-transform: uppercase;
 }
 
-.nav-element:hover {
+.nav-element.element {
+    opacity: 75%;
+}
+
+.nav-element.element:hover {
     opacity: 100%;
 }
 
@@ -171,11 +175,11 @@
 
 
 
-.darkmode-checkbox {
+.darkmode-toggle-wrapper {
     transform: scale(.9);
 }
 
-.darkmode-checkbox {
+.darkmode-toggle-wrapper {
     display: flex;
     position: relative;
     cursor: pointer;
@@ -185,7 +189,7 @@
     align-items: center;
 }
 
-.moon-input {
+.darkmode-checkbox {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -276,12 +280,12 @@
     transition: width .3s ease-in-out, height .3s ease-in-out;
 }
 
-.moon-input:checked~.sun-rays-hider {
+.darkmode-checkbox:checked~.sun-rays-hider {
     width: 32px;
     height: 32px;
 }
 
-.moon-input:checked~.moon::after {
+.darkmode-checkbox:checked~.moon::after {
     left: 75%;
     top: 35%;
 }
