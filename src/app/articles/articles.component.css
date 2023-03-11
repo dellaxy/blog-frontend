@@ -14,6 +14,7 @@
     transition: .3s;
     user-select: none;
     overflow: hidden;
+    border-radius: 1em;
 }
 
 .category-date {
@@ -47,6 +48,10 @@
     color: var(--text-color);
     background-color: var(--secondary-bg);
     border-color: var(--border-color);
+}
+
+.card-title {
+    font-size: 1.35em;
 }
 
 .page-item.active .page-link {

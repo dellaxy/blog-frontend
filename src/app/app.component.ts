@@ -3,7 +3,7 @@ declare var $: any;
 import { Category } from './category';
 import { ArticleService } from './article.service';
 import { CookieService } from 'ngx-cookie-service';
-
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +14,9 @@ export class AppComponent implements OnInit {
   categories: Category[];
   darkMode: boolean;
   isMobileNavOpen: boolean = false;
+
+  //icons
+  faFacebook = faFacebook; faTwitter = faTwitter; faInstagram = faInstagram;
 
   constructor(private articleservice: ArticleService, private cookieService: CookieService) {
     // Load the user's dark mode preference from cookies
