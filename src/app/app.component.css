@@ -8,7 +8,6 @@
     transition: .3s;
 }
 
-
 /* PC navbar */
 .nav {
     padding: 2em 2em;
@@ -28,9 +27,18 @@
     padding: 0em 1.4em;
     color: white;
     cursor: pointer;
-    transition: .5s;
+    transition: .3s;
     opacity: 100%;
     text-transform: uppercase;
+}
+
+.nav-element.element::after {
+    content: "";
+    display: none;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    transition: width .3s;
 }
 
 .nav-element.element {
@@ -71,11 +79,11 @@
 .nav-element-mobile {
     user-select: none;
     color: rgb(255, 255, 255);
-    font-weight: 300;
+    font-weight: 200;
     font-size: 1.6em;
     transition: .2s;
     cursor: pointer;
-    margin-bottom: 1em;
+    margin-bottom: .8em;
     text-transform: uppercase;
 }
 
@@ -177,6 +185,11 @@
     right: 4px;
     height: 3em;
     border-radius: 5em;
+    transition: .3s;
+}
+
+.newsletter-sub:hover {
+    background-color: #292929;
 }
 
 .social-media {
@@ -208,8 +221,14 @@ hr {
     width: 95%;
 }
 
+@media screen and (max-width: 1000px) {
+    .newsletter-wrapper {
+        width: 90%;
+    }
 
-@media screen and (max-width: 767px) {
+}
+
+@media screen and (max-width: 576px) {
     .newsletter-wrapper {
         width: 100%;
     }
@@ -223,6 +242,25 @@ hr {
 
     }
 }
+
+@media screen and (max-width:320px) {
+    .footer {
+        padding: 3em 1em;
+    }
+
+    .footer-text {
+        font-size: 1.8em;
+    }
+
+    .footer-info {
+        font-size: .85em;
+    }
+
+    .newsletter-wrapper {
+        font-size: 4.5vw;
+    }
+}
+
 
 /* Mobile navbar hamburger button */
 .menu-icon {

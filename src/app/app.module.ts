@@ -13,6 +13,7 @@ import { HomePageComponent } from './homepage/homepage.component'
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CookieService } from 'ngx-cookie-service';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 
@@ -21,7 +22,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     ArticleComponent,
     ArticlesComponent,
-    HomePageComponent
+    HomePageComponent,
+    PagenotfoundComponent
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

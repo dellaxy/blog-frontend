@@ -10,7 +10,7 @@ import { ArticleService } from '../article.service';
 })
 export class ArticlesComponent {
   articles: Article[];
-  articlesPerPage: number = 8;
+  articlesPerPage: number = 9;
   currentPage: number = 1;
   totalPages: number;
 

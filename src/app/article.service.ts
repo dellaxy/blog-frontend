@@ -13,7 +13,9 @@ export class ArticleService {
 
   public baseUrl = 'http://192.168.0.2:8080'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+  }
 
 
   // Article methods
