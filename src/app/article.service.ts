@@ -1,56 +1,81 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Article } from './article';
 import { Category } from './category';
-import { ArticleWithBody } from './article_body';
+import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  public baseUrl = 'http://192.168.0.2:8080'
+  public baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {
-
-  }
-
+  constructor(private http: HttpClient, private router: Router) { }
 
   // Article methods
 
   public getAllArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseUrl}/article/all`);
+    return this.http.get<Article[]>(`${this.baseUrl}/article/all`).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
   public getArticlesByCategoryId(category: number): Observable<Article[]> {
-    return this.http.get<Article[]>(`${this.baseUrl}/article/category/${category}`);
+    return this.http.get<Article[]>(`${this.baseUrl}/article/category/${category}`).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
-  public getArticleById(id: number): Observable<ArticleWithBody> {
-    return this.http.get<ArticleWithBody>(`${this.baseUrl}/article/${id}`);
+  public getArticleById(id: number): Observable<Article> {
+    return this.http.get<Article>(`${this.baseUrl}/article/${id}`).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
-  public createArticle(article: Article): void {
-    this.http.post<Article>(`${this.baseUrl}/article/add`, article);
+  public createArticle(article: Article): Observable<Article> {
+    return this.http.post<Article>(`${this.baseUrl}/article/add`, article).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
-  public updateArticle(article: Article): void {
-    this.http.put<Article>(`${this.baseUrl}/article/update`, article);
+  public updateArticle(article: Article): Observable<Article> {
+    return this.http.put<Article>(`${this.baseUrl}/article/update`, article).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
-  public deleteArticle(id: number): void {
-    this.http.delete<Article>(`${this.baseUrl}/article/delete/${id}`);
+  public deleteArticle(id: number): Observable<Article> {
+    return this.http.delete<Article>(`${this.baseUrl}/article/delete/${id}`).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
   // Category methods
 
   public getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.baseUrl}/category/all`);
+    return this.http.get<Category[]>(`${this.baseUrl}/category/all`).pipe(
+      catchError(error => this.handleError(error))
+    );
   }
 
   public getCategoryById(id: number): Observable<Category> {
-    return this.http.get<Category>(`${this.baseUrl}/category/${id}`);
+    return this.http.get<Category>(`${this.baseUrl}/category/${id}`).pipe(
+      catchError(error => this.handleError(error))
+    );
+  }
+
+  private handleError(error: any) {
+    if (error instanceof HttpErrorResponse) {
+      console.error(`Backend returned code ${error.status}, body was: ${error.error}`);
+    } else {
+      console.error(error);
+    }
+    this.router.navigate(['/notfound']); // navigate to the error page
+    return throwError(error);
   }
 }

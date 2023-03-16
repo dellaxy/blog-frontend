@@ -21,22 +21,12 @@ export class HomePageComponent implements OnInit {
   }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if (params["categoryId"])
-        this.getArticlesByCategory(params["categoryId"]);
-      else
-        this.getAllArticles();
+      this.getAllArticles();
     });
   }
 
   getAllArticles() {
     this.articleservice.getAllArticles().subscribe(
-      (response: Article[]) => {
-        this.articles = response;
-      }
-    );
-  }
-  getArticlesByCategory(id: number) {
-    this.articleservice.getArticlesByCategoryId(id).subscribe(
       (response: Article[]) => {
         this.articles = response;
       }

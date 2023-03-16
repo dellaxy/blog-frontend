@@ -14,6 +14,8 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CookieService } from 'ngx-cookie-service';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
+import { FormsModule } from '@angular/forms'; // Import the ReactiveFormsModule
 
 
 
@@ -23,7 +25,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ArticleComponent,
     ArticlesComponent,
     HomePageComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    AdminpageComponent
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
@@ -34,7 +37,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     BrowserAnimationsModule,
     MaterialModule,
     EditorModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
 
   ]
 })

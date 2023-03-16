@@ -1,3 +1,4 @@
+import { ArticleBody } from './body';
 import { Category } from './category';
 
 export class Article {
@@ -7,6 +8,5 @@ export class Article {
     leadParagraph!: string;
     title!: string;
     image!: string;
-    categoryColor!: string;
-
+    body: ArticleBody;
 }

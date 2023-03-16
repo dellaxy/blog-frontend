@@ -5,8 +5,8 @@
                 <img class="card-img-top" src="assets/images/{{article.image}}" alt="Card image cap">
                 <div class="card-body">
                     <div class="category-date">
-                        <div class="card-category" [ngStyle]="{'color': article.categoryColor}">
-                            {{article.category}}
+                        <div class="card-category" [ngStyle]="{'color': article.category.categoryColor}">
+                            {{article.category.categoryName}}
                         </div>
                         <div class="card-date">
                             <div class="card-date">{{getFormattedDate(article.date)}}</div>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="pagination-wrapper">
-        <ul class="pagination">
+        <ul class="pagination" *ngIf="totalPages>1">
             <li class="page-item"><button class="page-link" [disabled]="currentPage === 1"
                     (click)="getArticlesPerPage(currentPage-1)">&laquo;</button></li>
 

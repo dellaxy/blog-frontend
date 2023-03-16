@@ -53,26 +53,25 @@
 <body [ngClass]="{'dark': darkMode}">
 
   <router-outlet></router-outlet>
-
-  <footer class="footer_bar">
-    <div class="footer">
-      <div class="footer-infobox">
-        <span class="footer-text">NEWSLETTER</span>
-        <span class="footer-info">From local events to global headlines, we've got you covered.</span>
-      </div>
-      <div class="newsletter-wrapper">
-        <form>
-          <input type="email" class="newsletter-email" placeholder="Enter Your Email">
-          <button type="submit" class="newsletter-sub">SUBSCRIBE</button>
-        </form>
-      </div>
-      <div class="social-media">
-        <a href="https://www.facebook.com/"><fa-icon class="fa-2xl" [icon]="faFacebook"></fa-icon></a>
-        <a href="https://www.twitter.com/"><fa-icon class="fa-2xl" [icon]="faTwitter"></fa-icon></a>
-        <a href="https://www.instagram.com/"><fa-icon class="fa-2xl" [icon]="faInstagram"></fa-icon></a>
-      </div>
-      <hr>
-      <span class="footer-info">© 2023 - All Rights Reserved</span>
-    </div>
-  </footer>
 </body>
+<footer class="footer_bar">
+  <div class="footer">
+    <div class="footer-infobox">
+      <span class="footer-text">NEWSLETTER</span>
+      <span class="footer-info">From local events to global headlines, we've got you covered.</span>
+    </div>
+    <div class="newsletter-wrapper">
+      <form>
+        <input type="email" class="newsletter-email" placeholder="Enter Your Email">
+        <button type="submit" class="newsletter-sub">SUBSCRIBE</button>
+      </form>
+    </div>
+    <div class="social-media">
+      <a href="https://www.facebook.com/"><fa-icon class="fa-2xl" [icon]="faFacebook"></fa-icon></a>
+      <a href="https://www.twitter.com/"><fa-icon class="fa-2xl" [icon]="faTwitter"></fa-icon></a>
+      <a href="https://www.instagram.com/"><fa-icon class="fa-2xl" [icon]="faInstagram"></fa-icon></a>
+    </div>
+    <hr>
+    <span class="footer-info">© 2023 - All Rights Reserved</span>
+  </div>
+</footer>

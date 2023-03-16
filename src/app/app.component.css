@@ -1,5 +1,3 @@
-/* header - all navbars */
-
 .nav_bar {
     background-color: #0f0f0f;
     color: white;
@@ -114,6 +112,7 @@
 .footer_bar {
     background-color: #0f0f0f;
     color: white;
+    z-index: 4;
 }
 
 .footer {

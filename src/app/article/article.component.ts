@@ -1,17 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../article';
 import { ArticleService } from '../article.service';
-import { ArticleWithBody } from '../article_body';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.css']
 })
-export class ArticleComponent implements OnInit {
+export class ArticleComponent {
 
-  article: ArticleWithBody;
+  article: Article;
 
   constructor(private articleservice: ArticleService, private route: ActivatedRoute) { }
 
@@ -22,7 +21,7 @@ export class ArticleComponent implements OnInit {
 
   getArticleById(id: number) {
     this.articleservice.getArticleById(id).subscribe(
-      (response: ArticleWithBody) => {
+      (response: Article) => {
         this.article = response;
         console.log(this.article);
 

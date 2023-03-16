@@ -31,10 +31,8 @@
 }
 
 .card-img-top {
-    border-radius: 0;
     object-fit: cover;
     height: 300px;
-    image-rendering: auto;
 }
 
 .page-item {

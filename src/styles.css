@@ -5,6 +5,8 @@ body {
     overflow: overlay;
     background-color: var(--primary-bg);
     transition: .3s;
+    margin: 0;
+    font-family: 'Roboto Serif', serif;
 }
 
 
@@ -30,27 +32,7 @@ body.dark {
     --disabled-color: rgb(73, 73, 73);
 }
 
-::-webkit-scrollbar {
-    width: 10px;
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #0c0c0c;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0f0f0f;
-}
-
 html,
 body {
-    height: 100%;
-
-}
-
-body {
-    margin: 0;
-    font-family: 'Roboto Serif', serif;
+    min-height: 100vh;
 }
