@@ -7,6 +7,7 @@ import { Article } from './article';
 import { Category } from './category';
 import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
+import { ArticlePost } from './articlepost';
 
 @Injectable({
   providedIn: 'root'
@@ -37,14 +38,14 @@ export class ArticleService {
     );
   }
 
-  public createArticle(article: Article): Observable<Article> {
-    return this.http.post<Article>(`${this.baseUrl}/article/add`, article).pipe(
+  public createArticle(article: ArticlePost): Observable<ArticlePost> {
+    return this.http.post<ArticlePost>(`${this.baseUrl}/article/add`, article).pipe(
       catchError(error => this.handleError(error))
     );
   }
 
-  public updateArticle(article: Article): Observable<Article> {
-    return this.http.put<Article>(`${this.baseUrl}/article/update`, article).pipe(
+  public updateArticle(article: ArticlePost): Observable<ArticlePost> {
+    return this.http.put<ArticlePost>(`${this.baseUrl}/article/update`, article).pipe(
       catchError(error => this.handleError(error))
     );
   }
@@ -75,7 +76,7 @@ export class ArticleService {
     } else {
       console.error(error);
     }
-    this.router.navigate(['/notfound']); // navigate to the error page
+    //this.router.navigate(['/notfound']); // navigate to the error page
     return throwError(error);
   }
 }

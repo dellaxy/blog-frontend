@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<div class="article-cards">
+<div class="m-4" id="article-cards">
     <div class="container-fluid">
         <div class="row g-4 row-cols-1 row-cols-lg-2 justify-cotent-evenly">
             <div class="col-lg-6" *ngFor="let article of articles">
                 <div class="card">
-                    <div class="row g-0">
+                    <div class="row g-0 card-row">
                         <div class="col-6 col-md-5 articlecard-image">
                             <img src="assets/images/{{article.image}}" alt="{{article.image}}"
                                 class="card-img img-fluid">
@@ -19,9 +19,11 @@
                                     <h5 class="card-title">{{article.title}}</h5>
                                     <p class="card-text">{{article.leadParagraph}}</p>
                                 </div>
-                                <div class="position-absolute bottom-0 start-2 pb-3">
-                                    <fa-icon class="fa-xl text-dark" [icon]="faPencil"></fa-icon>
-                                    <fa-icon class="fa-xl text-danger" [icon]="faTrash"></fa-icon>
+                                <div class="position-absolute bottom-0 start-2 pb-3 editbuttons">
+                                    <div (click)="onModalOpen(article, 'edit')"><fa-icon class="fa-xl text-dark"
+                                            [icon]="faPencil"></fa-icon></div>
+                                    <div (click)="onModalOpen(article, 'delete')"><fa-icon class="fa-xl text-danger"
+                                            [icon]="faTrash"></fa-icon></div>
                                 </div>
                             </div>
                         </div>
@@ -32,17 +34,17 @@
     </div>
 </div>
 
-
-<button class="button" class="plus-button plus-button--large sticky-bottom" data-bs-toggle="modal"
+<button class="button plus-button plus-button--large sticky-bottom" data-bs-toggle="modal"
     data-bs-target="#addArticleModal"></button>
 
-<div class="modal modal-xl hide fade in" id="addArticleModal" tabindex="-1" aria-labelledby="addArticleModal"
-    aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+<div class="modal modal-xl fade" id="addArticleModal" tabindex="-1" aria-labelledby="addArticleModal" aria-hidden="true"
+    data-bs-keyboard="false" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="moodalTitle">New Article</h5>
-                <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="modalTitle">New Article</h5>
+                <button type="button" id="close-addmodal" class="btn-close shadow-none" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
             </div>
             <form #addForm="ngForm" (ngSubmit)="onAddArticle(addForm)">
                 <div class="modal-body">
@@ -65,13 +67,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <editor apiKey="{{tinymceapi}}" [init]="{
-                            plugins: 'autolink autoresize textcolor',
-                            toolbar1: 'fontfamily fontsize | forecolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | lineheight indent outdent',
+                        <editor ngModel name="content" apiKey="{{tinymceapi}}" [init]="{
+                            plugins: 'autolink autoresize',
+                            toolbar1: 'fontfamily fontsize | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | lineheight indent outdent',
                             menubar: false,
-                            min_height: 400,
-                            content_css: 'adminpage.component.css'
-                          }">
+                            min_height: 400
+                          }" required>
                         </editor>
                     </div>
                 </div>
@@ -83,6 +84,58 @@
     </div>
 </div>
 
+<div class="modal modal-xl fade" id="updateArticleModal" tabindex="-1" aria-labelledby="updateArticleModal"
+    aria-hidden="true" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="moodalTitle">Edit Article</h5>
+                <button type="button" id="close-updatemodal" class="btn-close shadow-none" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <form #updateForm="ngForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <input type="text" ngModel="{{updateArticle?.title}}" name="title"
+                            class="form-control shadow-none" id="titleInput" placeholder="Your title here." required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea ngModel="{{updateArticle?.leadParagraph}}" name="leadParagraph"
+                            class="form-control shadow-none" id="leadInput" placeholder="Your lead paragraph here."
+                            required></textarea>
+                        <div class="form-text">The lead paragraph should be brief and engaging.</div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <select ngModel="{{updateArticle?.category}}" name="category" class="form-select shadow-none"
+                            required>
+                            <option *ngFor="let category of categories" value="{{category.id}}">
+                                {{category.categoryName}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <editor ngModel="{{updateArticle?.body.content}}" name="content" apiKey="{{tinymceapi}}" [init]="{
+                            plugins: 'autolink autoresize textcolor table charmap pagebreak lists advlist',
+                            toolbar1: 'fontfamily fontsize | forecolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | lineheight indent outdent | charmap pagebreak',
+                            toolbar2: 'table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',
+                            menubar: false,
+                            min_height: 400,
+                            allow_html_in_named_anchor: true,
+                            toolbar_sticky: true,
+                            toolbar_sticky_top_offset: 10
+                          }" required>
+
+                        </editor>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button (click)="onUpdateArticle(updateForm)" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="deleteArticleModal" tabindex="-1" aria-labelledby="deleteArticleModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -92,11 +145,14 @@
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                Are you sure you want to delete this article ?
+                <br>
+                <strong>{{deleteArticle?.title}}</strong>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <button (click)="onDeleteArticle(deleteArticle.id)" type="button" class="btn btn-danger"
+                    data-bs-dismiss="modal">Yes</button>
             </div>
         </div>
     </div>

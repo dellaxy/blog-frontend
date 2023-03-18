@@ -4,6 +4,7 @@ import { Category } from './category';
 import { ArticleService } from './article.service';
 import { CookieService } from 'ngx-cookie-service';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { NavbarService } from './navbar.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

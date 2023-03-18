@@ -1,5 +1,5 @@
 export class ArticleBody {
     id!: number;
-    lastUpdated!: Date;
+    last_update!: Date;
     content!: string;
 }

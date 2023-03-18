@@ -43,17 +43,37 @@
 
 
 .card {
-    background-color: var(--card-bg);
-    color: var(--text-color);
     transition: .3s;
     box-shadow: rgba(17, 12, 46, 0.10) 0px 5px 10px 0px;
     border: 0;
 }
 
-.card-img {
-    width: 100%;
+.card-row {
+    height: 250px;
+}
+
+.articlecard-image {
     height: 100%;
+    overflow: hidden;
+}
+
+.card-img {
     object-fit: cover;
+    height: 100%;
+    width: 100%;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
+}
+
+.editbuttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+}
+
+.editbuttons div {
+    cursor: pointer;
+    bottom: 0px;
+    position: relative;
+    transition: .3s;
 }
