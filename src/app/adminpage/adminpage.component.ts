@@ -157,9 +157,8 @@ export class AdminpageComponent {
     article.category = form.value.category;
     article.body.content = form.value.content;
     article.body.last_update = date;
-    if (form.value.image == null)
-      article.image = this.updateArticle.image;
-    else {
+    article.image = this.updateArticle.image;
+    if (form.value.image != '') {
       article.image = this.imageToSave.name;
       const fd = new FormData();
       fd.append('image', this.imageToSave, this.imageToSave.name);
@@ -175,6 +174,7 @@ export class AdminpageComponent {
       }
     );
   }
+
 
 
 }
