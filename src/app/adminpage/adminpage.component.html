@@ -1,17 +1,27 @@
-<div class="m-4" id="article-cards">
-    <div class="container-fluid">
+<div class="container-fluid p-4">
+
+
+    <form class="searchbar-wrapper">
+        <input (ngModelChange)="searchArticle(key.value)" type="search" id="searchbar" class="form-control"
+            placeholder="Search..." #key="ngModel" ngModel name="key" required>
+        <div class="searchbar-button">
+            <fa-icon class="fa-lg" [icon]="faMagnifyingGlass"></fa-icon>
+        </div>
+    </form>
+
+    <div id="article-cards">
         <div class="row g-4 row-cols-1 row-cols-lg-2 justify-cotent-evenly">
             <div class="col-lg-6" *ngFor="let article of articles">
                 <div class="card">
                     <div class="row g-0 card-row">
                         <div class="col-6 col-md-5 articlecard-image">
-                            <img src="assets/images/{{article.image}}" alt="{{article.image}}"
+                            <img loading="lazy" src="assets/images/{{article.image}}" alt="{{article.image}}"
                                 class="card-img img-fluid">
                         </div>
                         <div class="col-6 col-md-7">
                             <div class="card-body d-flex flex-column">
                                 <div class="h-100">
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between mb-2">
                                         <div class="text-muted">ID: {{article.id}}</div>
                                         <div class="text-muted">{{article.date | date:'dd.MM.yyyy HH:00'}}</div>
                                     </div>
@@ -33,10 +43,9 @@
     </div>
 </div>
 
-
-
 <button class="button plus-button plus-button--large sticky-bottom" data-bs-toggle="modal"
     data-bs-target="#addArticleModal"></button>
+
 
 <div class="modal modal-xl fade" id="addArticleModal" tabindex="-1" aria-labelledby="addArticleModal" aria-hidden="true"
     data-bs-keyboard="false" data-bs-backdrop="static">
@@ -56,7 +65,8 @@
                     <div class="mb-3">
                         <textarea ngModel name="leadParagraph" class="form-control shadow-none" id="leadInput"
                             placeholder="Your lead paragraph here." required></textarea>
-                        <div class="form-text">The lead paragraph should be concise and clearly understandable.</div>
+                        <div class="form-text">The lead paragraph should be concise and clearly understandable.
+                        </div>
 
                     </div>
 

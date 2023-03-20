@@ -4,7 +4,7 @@ import { ArticleService } from '../article.service';
 import { Category } from '../category';
 import { NgForm } from '@angular/forms';
 import { environment } from '../../environments/environment.development';
-import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { ArticleBody } from '../body';
 import { ArticlePost } from '../articlepost';
 import { HttpClient } from '@angular/common/http';
@@ -18,6 +18,7 @@ import imageCompression from 'browser-image-compression';
 export class AdminpageComponent {
   faTrash = faTrash;
   faPencil = faPencil;
+  faMagnifyingGlass = faMagnifyingGlass;
 
   categories: Category[];
   articles: Article[];
@@ -44,6 +45,22 @@ export class AdminpageComponent {
       console.log("image compressed successfully");
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  searchArticle(search: string): void {
+    const result: Article[] = [];
+    for (const article of this.articles) {
+      console.log(article.id);
+      if (article.id === Number(search)
+        || article.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
+        || article.category.categoryName.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
+        result.push(article);
+      }
+    }
+    this.articles = result;
+    if (result.length === 0 || !search) {
+      this.getAllArticles();
     }
   }
 
