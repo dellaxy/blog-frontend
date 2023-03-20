@@ -5,7 +5,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Article } from './article';
 import { Category } from './category';
-import { Router } from '@angular/router';
 import { environment } from '../environments/environment';
 import { ArticlePost } from './articlepost';
 
@@ -16,7 +15,7 @@ export class ArticleService {
 
   public baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) { }
 
   // Article methods
 
@@ -69,6 +68,14 @@ export class ArticleService {
       catchError(error => this.handleError(error))
     );
   }
+
+  public uploadImage(formData: FormData): Observable<FormData> {
+    return this.http.post<FormData>(`${this.baseUrl}/article/uploadImage`, formData).pipe(
+      catchError(error => this.handleError(error))
+    );
+  }
+
+
 
   private handleError(error: any) {
     if (error instanceof HttpErrorResponse) {

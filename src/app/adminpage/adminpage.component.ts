@@ -7,6 +7,8 @@ import { environment } from '../../environments/environment.development';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { ArticleBody } from '../body';
 import { ArticlePost } from '../articlepost';
+import { HttpClient } from '@angular/common/http';
+import imageCompression from 'browser-image-compression';
 
 @Component({
   selector: 'app-adminpage',
@@ -19,12 +21,30 @@ export class AdminpageComponent {
 
   categories: Category[];
   articles: Article[];
+  imageToSave: File;
 
   tinymceapi = environment.tinyMceApiKey;
 
   deleteArticle: Article;
   updateArticle: Article;
-  constructor(private articleservice: ArticleService) {
+  constructor(private articleservice: ArticleService, private http: HttpClient) {
+  }
+
+  async onFileSelected(event: any) {
+    this.imageToSave = event.target.files[0];
+
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    }
+    try {
+      const compressedFile = await imageCompression(this.imageToSave, options);
+      this.imageToSave = compressedFile;
+      console.log("image compressed successfully");
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   ngOnInit() {
@@ -78,10 +98,17 @@ export class AdminpageComponent {
     newArticle.title = form.value.title;
     newArticle.lead = form.value.leadParagraph;
     newArticle.category = form.value.category;
-    newArticle.image = "img.jpg";
+    newArticle.image = this.imageToSave.name;
     newArticle.body.content = form.value.content;
     newArticle.body.last_update = date;
     newArticle.date = date;
+
+    const fd = new FormData();
+    fd.append('image', this.imageToSave, this.imageToSave.name);
+    this.articleservice.uploadImage(fd).subscribe(
+      (error => console.log(error))
+    );
+
 
     this.articleservice.createArticle(newArticle).subscribe(
       (response: ArticlePost) => {
@@ -115,9 +142,14 @@ export class AdminpageComponent {
     article.body.last_update = date;
     if (form.value.image == null)
       article.image = this.updateArticle.image;
-    else
-      article.image = form.value.image;
-
+    else {
+      article.image = this.imageToSave.name;
+      const fd = new FormData();
+      fd.append('image', this.imageToSave, this.imageToSave.name);
+      this.articleservice.uploadImage(fd).subscribe(
+        (error: any) => console.log(error)
+      );
+    }
     this.articleservice.updateArticle(article).subscribe(
       (response: ArticlePost) => {
         form.reset();
@@ -126,6 +158,7 @@ export class AdminpageComponent {
       }
     );
   }
+
 
 }
 
