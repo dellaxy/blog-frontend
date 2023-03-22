@@ -17,6 +17,8 @@ export class HomePageComponent implements OnInit {
 
   articles: Article[];
 
+  isLoaded: boolean = false;
+
   constructor(private articleservice: ArticleService, private route: ActivatedRoute) {
   }
   ngOnInit() {
@@ -29,6 +31,7 @@ export class HomePageComponent implements OnInit {
     this.articleservice.getAllArticles().subscribe(
       (response: Article[]) => {
         this.articles = response;
+        this.isLoaded = true;
       }
     );
   }

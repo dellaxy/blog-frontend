@@ -5,7 +5,7 @@
         <input (ngModelChange)="searchArticle(key.value)" type="search" id="searchbar" class="form-control"
             placeholder="Search..." #key="ngModel" ngModel name="key" required>
         <div class="searchbar-button">
-            <fa-icon class="fa-lg" [icon]="faMagnifyingGlass"></fa-icon>
+            <fa-icon class="fa-lg" [icon]="icons.faMagnifyingGlass"></fa-icon>
         </div>
     </form>
 
@@ -31,9 +31,9 @@
                                 </div>
                                 <div class="position-absolute bottom-0 start-2 pb-3 editbuttons">
                                     <div (click)="onModalOpen(article, 'edit')"><fa-icon class="fa-xl text-dark"
-                                            [icon]="faPencil"></fa-icon></div>
+                                            [icon]="icons.faPencil"></fa-icon></div>
                                     <div (click)="onModalOpen(article, 'delete')"><fa-icon class="fa-xl text-danger"
-                                            [icon]="faTrash"></fa-icon></div>
+                                            [icon]="icons.faTrash"></fa-icon></div>
                                 </div>
                             </div>
                         </div>
@@ -87,8 +87,14 @@
                           }" required>
                         </editor>
                     </div>
-                    <input type="file" ngForm name="image" (change)="onFileSelected($event)"
-                        accept="image/png, image/jpeg, image/jpg" required>
+                    <div>
+                        <input type="file" ngModel name="image" class="form-control shadow-none" id="image-attach"
+                            accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)" required />
+                        <label for="image-attach" id="attachfile">
+                            <fa-icon class="fa-2xl file-input" [icon]="icons.faPaperclip"></fa-icon>
+                            <span id="imagefile-text">{{filename ? filename : 'Attach file.'}}</span>
+                        </label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Submit</button>
@@ -142,9 +148,16 @@
 
                         </editor>
                     </div>
-                    <input ngModel name="image" type="file" (change)="onFileSelected($event)"
-                        accept="image/png, image/jpeg, image/jpg">
-
+                    <div>
+                        <div>
+                            <input type="file" ngModel name="image" class="form-control shadow-none" id="image-attach"
+                                accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)">
+                            <label for="image-attach" id="attachfile">
+                                <fa-icon class="fa-2xl file-input" [icon]="icons.faPaperclip"></fa-icon>
+                                <span id="imagefile-text">{{filename ? filename : 'Attach file.'}}</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button (click)="onUpdateArticle(updateForm)" type="submit" class="btn btn-primary">Submit</button>

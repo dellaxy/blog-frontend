@@ -22,12 +22,13 @@ export class AppComponent implements OnInit {
   constructor(private articleservice: ArticleService, private cookieService: CookieService) {
     // Load the user's dark mode preference from cookies
     this.darkMode = this.cookieService.get('darkMode') === 'true';
+    document.body.classList.toggle('dark', this.darkMode);
   }
 
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
-    // Save the user's dark mode preference to cookies
     this.cookieService.set('darkMode', this.darkMode.toString());
+    document.body.classList.toggle('dark', this.darkMode);
   }
 
   ngOnInit() {

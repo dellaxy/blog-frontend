@@ -4,7 +4,7 @@ import { ArticleService } from '../article.service';
 import { Category } from '../category';
 import { NgForm } from '@angular/forms';
 import { environment } from '../../environments/environment.development';
-import { faTrash, faPencil, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faPencil, faMagnifyingGlass, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import { ArticleBody } from '../body';
 import { ArticlePost } from '../articlepost';
 import { HttpClient } from '@angular/common/http';
@@ -16,13 +16,18 @@ import imageCompression from 'browser-image-compression';
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent {
-  faTrash = faTrash;
-  faPencil = faPencil;
-  faMagnifyingGlass = faMagnifyingGlass;
+  icons = {
+    faTrash,
+    faPencil,
+    faMagnifyingGlass,
+    faPaperclip
+  };
+
 
   categories: Category[];
   articles: Article[];
   imageToSave: File;
+  filename: string;
 
   tinymceapi = environment.tinyMceApiKey;
 
@@ -31,9 +36,15 @@ export class AdminpageComponent {
   constructor(private articleservice: ArticleService, private http: HttpClient) {
   }
 
+
+  ngOnInit() {
+    this.getAllCategories();
+    this.getAllArticles();
+  }
+
   async onFileSelected(event: any) {
     this.imageToSave = event.target.files[0];
-
+    this.filename = this.imageToSave.name;
     const options = {
       maxSizeMB: 1,
       maxWidthOrHeight: 1920,
@@ -51,7 +62,6 @@ export class AdminpageComponent {
   searchArticle(search: string): void {
     const result: Article[] = [];
     for (const article of this.articles) {
-      console.log(article.id);
       if (article.id === Number(search)
         || article.title.toLowerCase().indexOf(search.toLowerCase()) !== -1
         || article.category.categoryName.toLowerCase().indexOf(search.toLowerCase()) !== -1) {
@@ -64,10 +74,7 @@ export class AdminpageComponent {
     }
   }
 
-  ngOnInit() {
-    this.getAllCategories();
-    this.getAllArticles();
-  }
+
 
 
   getAllCategories(): void {
@@ -115,23 +122,22 @@ export class AdminpageComponent {
     newArticle.title = form.value.title;
     newArticle.lead = form.value.leadParagraph;
     newArticle.category = form.value.category;
-    newArticle.image = this.imageToSave.name;
+    newArticle.image = this.filename;
     newArticle.body.content = form.value.content;
     newArticle.body.last_update = date;
     newArticle.date = date;
 
     const fd = new FormData();
-    fd.append('image', this.imageToSave, this.imageToSave.name);
+    fd.append('image', this.imageToSave, this.filename);
     this.articleservice.uploadImage(fd).subscribe(
       (error => console.log(error))
     );
-
-
     this.articleservice.createArticle(newArticle).subscribe(
       (response: ArticlePost) => {
         form.reset();
         document.getElementById('close-addmodal')?.click();
         this.getAllArticles();
+        this.filename = '';
       }
     );
   }
@@ -158,8 +164,10 @@ export class AdminpageComponent {
     article.body.content = form.value.content;
     article.body.last_update = date;
     article.image = this.updateArticle.image;
+    console.log(form.value.image);
+
     if (form.value.image != '') {
-      article.image = this.imageToSave.name;
+      article.image = this.filename;
       const fd = new FormData();
       fd.append('image', this.imageToSave, this.imageToSave.name);
       this.articleservice.uploadImage(fd).subscribe(
@@ -171,6 +179,7 @@ export class AdminpageComponent {
         form.reset();
         document.getElementById('close-updatemodal')?.click();
         this.getAllArticles();
+        this.filename = '';
       }
     );
   }

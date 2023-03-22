@@ -52,33 +52,31 @@
     display: none;
     flex-direction: row;
     padding: 1em 1em;
+    z-index: 4;
+    background-color: #0f0f0f;
     justify-content: space-between;
     align-items: center;
     position: relative;
 }
 
+
 .nav-overlay {
     display: none;
     width: 100%;
-    overflow: auto;
     z-index: 3;
-    position: fixed;
+    position: absolute;
     background-color: #0f0f0f;
     justify-content: end;
-    flex-direction: column;
-}
-
-.nav-overlay div {
-    display: block;
-    text-decoration: none;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 .nav-element-mobile {
+    display: block;
+    text-decoration: none;
     user-select: none;
     color: rgb(255, 255, 255);
     font-weight: 200;
-    font-size: 1.6em;
+    font-size: 1.3em;
     transition: .2s;
     cursor: pointer;
     margin-bottom: .8em;
@@ -86,11 +84,13 @@
 }
 
 .hidden {
+    display: hidden;
     transform: translateY(-100%);
     transition: all .6s;
 }
 
 .show {
+    display: block;
     transform: translateY(0%);
 }
 
@@ -105,7 +105,7 @@
     }
 
     .nav-overlay {
-        display: flex;
+        display: block;
     }
 }
 

@@ -49,6 +49,18 @@
     overflow: hidden;
 }
 
+.file-input {
+    cursor: pointer;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#imagefile-text {
+    margin-left: .5em;
+}
+
 .card-row {
     height: 250px;
 }

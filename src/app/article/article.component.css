@@ -11,7 +11,7 @@
 
 .jumbotron {
     background-color: var(--secondary-bg);
-    padding: 30px 65px;
+    padding: 20px 65px;
     transition: .1s;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .lead {
-    margin-top: 25px;
+    margin: 30px 0px;
 }
 
 @media screen and (max-width: 767px) {

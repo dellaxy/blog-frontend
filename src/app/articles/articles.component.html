@@ -1,4 +1,22 @@
 <div id="articles-container" class="container">
+    <div class="row row-cols-1 row-cols-sm-2  row-cols-md-2 row-cols-lg-2 row-cols-xl-3" *ngIf="!isLoaded">
+        <div class="col" *ngFor="let itms of [].constructor(articlesPerPage); let i= index">
+            <div class="card">
+                <div class="skeleton skeleton-image"></div>
+                <div class="card-body">
+                    <div class="category-date">
+                        <div class="skeleton skeleton-category"></div>
+                        <div class="skeleton skeleton-date"></div>
+                    </div>
+                    <div class="skeleton skeleton-title">
+                        <div class="line"></div>
+                        <div class="line"></div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row row-cols-1 row-cols-sm-2  row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
         <div class="col" *ngFor="let article of articles">
             <div class="card" routerLink="/articles/article/{{article.id}}">

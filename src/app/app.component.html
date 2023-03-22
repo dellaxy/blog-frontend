@@ -42,18 +42,15 @@
       <span class="sun-rays-hider"></span>
     </div>
   </div>
-
+  <div class="nav-overlay text-center hidden" [ngClass]="{'show': isMobileNavOpen}">
+    <div *ngFor="let category of categories" routerLink="/articles/category/" [queryParams]="{categoryId: category.id}"
+      class="nav-element-mobile">
+      {{category.categoryName}}</div>
+  </div>
 </header>
-<nav class="nav-overlay text-center hidden" [ngClass]="{'show': isMobileNavOpen}">
-  <div *ngFor="let category of categories" routerLink="/articles/category/" [queryParams]="{categoryId: category.id}"
-    class="nav-element-mobile">
-    {{category.categoryName}}</div>
-</nav>
 
-<body [ngClass]="{'dark': darkMode}">
+<router-outlet></router-outlet>
 
-  <router-outlet></router-outlet>
-</body>
 <footer class="footer_bar">
   <div class="footer">
     <div class="footer-infobox">

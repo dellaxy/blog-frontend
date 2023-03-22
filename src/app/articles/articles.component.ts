@@ -13,11 +13,13 @@ export class ArticlesComponent {
   articlesPerPage: number = 9;
   currentPage: number = 1;
   totalPages: number;
+  isLoaded: boolean = false;
 
   constructor(private articleservice: ArticleService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getArticlesPerPage(this.currentPage);
+
   }
 
   getArticlesPerPage(currentPage: number) {
@@ -37,6 +39,7 @@ export class ArticlesComponent {
     this.articleservice.getAllArticles().subscribe((response: Article[]) => {
       this.articles = response.slice(startingIndex, endingIndex);
       this.totalPages = Math.ceil(response.length / this.articlesPerPage);
+      this.isLoaded = true;
     });
   }
 
@@ -44,6 +47,7 @@ export class ArticlesComponent {
     this.articleservice.getArticlesByCategoryId(id).subscribe((response: Article[]) => {
       this.articles = response.slice(startingIndex, endingIndex);
       this.totalPages = Math.ceil(response.length / this.articlesPerPage);
+      this.isLoaded = true;
     });
   }
 

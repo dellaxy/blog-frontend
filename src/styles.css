@@ -14,11 +14,15 @@ body {
     --primary-bg: rgb(245, 245, 245);
     --card-bg: rgb(255, 255, 255);
     --text-color: rgb(0, 0, 0);
-    --gretext-color: rgb(146, 146, 146);
+    --greytext-color: rgb(146, 146, 146);
     --secondary-bg: rgb(255, 255, 255);
     --border-color: rgb(230, 230, 230);
+
     --selected-color: rgb(221, 221, 221);
     --disabled-color: rgb(180, 180, 180);
+
+    --skeleton-color: rgb(223, 223, 223);
+    --skeleton-anim: rgba(243, 243, 243, 0.5);
 }
 
 body.dark {
@@ -28,8 +32,12 @@ body.dark {
     --greytext-color: rgb(175, 175, 175);
     --secondary-bg: #161616;
     --border-color: #222222;
+
     --selected-color: #0f0f0f;
     --disabled-color: rgb(73, 73, 73);
+
+    --skeleton-color: #2b2b2b;
+    --skeleton-anim: rgba(59, 59, 59, 0.5);
 }
 
 html,
