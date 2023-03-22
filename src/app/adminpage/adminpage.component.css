@@ -129,3 +129,86 @@ input[type="search"]::-webkit-search-results-decoration {
     top: 26%;
     color: rgb(100, 100, 100);
 }
+
+/* Skeleton */
+
+.skeleton-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 1em;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    background: var(--skeleton-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-title {
+    width: 100%;
+    margin: 1.5em 0;
+}
+
+.skeleton-id {
+    width: 8%;
+    height: 10px;
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.skeleton-title .line {
+    height: 16px;
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    margin-bottom: 0.5em;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-title div:nth-child(1) {
+    width: 80%;
+}
+
+.skeleton-title div:nth-child(2) {
+    width: 60%;
+}
+
+.skeleton-lead {
+    width: 100%;
+    margin: 1.5em 0;
+}
+
+.skeleton-lead .line {
+    height: 13px;
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    margin-bottom: 0.7em;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-lead div:nth-child(1) {
+    width: 90%;
+}
+
+.skeleton-lead div:nth-child(2) {
+    width: 70%;
+}
+
+.skeleton-lead div:nth-child(3) {
+    width: 80%;
+}
+
+.line::before,
+.skeleton-image::before,
+.skeleton-id::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, var(--skeleton-color) 0%, var(--skeleton-anim) 20%, var(--skeleton-color) 40%, var(--skeleton-color) 100%);
+    background-repeat: no-repeat;
+    animation: skeleton 2s linear infinite;
+}

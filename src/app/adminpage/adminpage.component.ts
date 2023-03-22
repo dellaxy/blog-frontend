@@ -23,6 +23,7 @@ export class AdminpageComponent {
     faPaperclip
   };
 
+  isLoaded: boolean = false;
 
   categories: Category[];
   articles: Article[];
@@ -40,6 +41,8 @@ export class AdminpageComponent {
   ngOnInit() {
     this.getAllCategories();
     this.getAllArticles();
+    document.body.classList.toggle('dark', false);
+
   }
 
   async onFileSelected(event: any) {
@@ -89,6 +92,7 @@ export class AdminpageComponent {
     this.articleservice.getAllArticles().subscribe(
       (response: Article[]) => {
         this.articles = response;
+        this.isLoaded = true;
       }
     );
   }

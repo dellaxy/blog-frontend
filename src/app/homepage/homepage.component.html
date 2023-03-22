@@ -1,4 +1,26 @@
 <div class="container-fluid">
+    <div *ngIf="!isLoaded">
+        <div class="row article skeleton" *ngFor="let itms of [].constructor(5); let i= index">
+            <div class="col-lg-5 col-md-6 thumbnail-wrapper">
+                <div class="skeleton-thumbnail">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-5 text-wrapper">
+                <div class="skeleton-date">
+                </div>
+                <div class="skeleton-title">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="skeleton-lead">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row article" *ngFor="let article of articles | slice:0:5">
         <div class="bg">
             <img src="assets/images/{{article.image}}" alt="" class="bg-img">

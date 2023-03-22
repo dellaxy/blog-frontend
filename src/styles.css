@@ -36,8 +36,8 @@ body.dark {
     --selected-color: #0f0f0f;
     --disabled-color: rgb(73, 73, 73);
 
-    --skeleton-color: #2b2b2b;
-    --skeleton-anim: rgba(59, 59, 59, 0.5);
+    --skeleton-color: #272727;
+    --skeleton-anim: rgba(48, 48, 48, 0.5);
 }
 
 html,
@@ -64,4 +64,14 @@ input[type="color"]:focus,
     border-color: rgba(168, 168, 168, 0.8);
     box-shadow: none;
     outline: none;
+}
+
+@keyframes skeleton {
+    0% {
+        background-position: -200px 0;
+    }
+
+    100% {
+        background-position: 600px 0;
+    }
 }

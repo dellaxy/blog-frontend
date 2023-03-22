@@ -10,6 +10,39 @@
     </form>
 
     <div id="article-cards">
+
+        <div class="row g-4 row-cols-1 row-cols-lg-2 justify-cotent-evenly mb-4" *ngIf="!isLoaded">
+            <div class="col-lg-6" *ngFor="let itms of [].constructor(8); let i= index">
+                <div class="card">
+                    <div class="row g-0 card-row">
+                        <div class="col-6 col-md-5 articlecard-image">
+                            <div class="skeleton-image"></div>
+                        </div>
+                        <div class="col-6 col-md-7">
+                            <div class="card-body d-flex flex-column">
+                                <div class="h-100">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <div class="skeleton-id"></div>
+                                    </div>
+                                    <div class="skeleton-title">
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                    <div class="skeleton-lead">
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                        <div class="line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="row g-4 row-cols-1 row-cols-lg-2 justify-cotent-evenly">
             <div class="col-lg-6" *ngFor="let article of articles">
                 <div class="card">
