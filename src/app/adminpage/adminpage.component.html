@@ -121,9 +121,9 @@
                         </editor>
                     </div>
                     <div>
-                        <input type="file" ngModel name="image" class="form-control shadow-none" id="image-attach"
+                        <input type="file" ngModel name="image" id="image-attach-add"
                             accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)" required />
-                        <label for="image-attach" id="attachfile">
+                        <label for="image-attach-add" id="image-clip">
                             <fa-icon class="fa-2xl file-input" [icon]="icons.faPaperclip"></fa-icon>
                             <span id="imagefile-text">{{filename ? filename : 'Attach file.'}}</span>
                         </label>
@@ -183,10 +183,10 @@
                     </div>
                     <div>
                         <div>
-                            <input type="file" ngModel name="image" class="form-control shadow-none" id="image-attach"
+                            <input type="file" ngModel name="image" id="image-attach-upload"
                                 accept="image/png, image/jpeg, image/jpg" (change)="onFileSelected($event)">
-                            <label for="image-attach" id="attachfile">
-                                <fa-icon class="fa-2xl file-input" [icon]="icons.faPaperclip"></fa-icon>
+                            <label for="image-attach-upload" id="image-clip">
+                                <fa-icon class="fa-2xl" [icon]="icons.faPaperclip"></fa-icon>
                                 <span id="imagefile-text">{{filename ? filename : 'Attach file.'}}</span>
                             </label>
                         </div>

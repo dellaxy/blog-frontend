@@ -168,6 +168,7 @@ export class AdminpageComponent {
     article.body.content = form.value.content;
     article.body.last_update = date;
     article.image = this.updateArticle.image;
+
     console.log(form.value.image);
 
     if (form.value.image != '') {
