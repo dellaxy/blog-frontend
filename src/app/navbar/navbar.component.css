@@ -1,0 +1,347 @@
+.nav_bar {
+    background-color: #0f0f0f;
+    color: white;
+    z-index: 4;
+    user-select: none;
+    transition: .3s;
+}
+
+/* PC navbar */
+.nav {
+    padding: 2em 2em;
+}
+
+.nav-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.nav-element-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-element {
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 0em 1.4em;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+    opacity: 100%;
+    text-transform: uppercase;
+}
+
+.category-dropdown::after {
+    content: "";
+    border: solid rgb(255, 255, 255);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    position: relative;
+    padding: 3px;
+    top: -4px;
+    left: 5px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: .35s;
+}
+
+.category-dropdown.open::after {
+    top: -2px;
+    transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+}
+
+
+.nav-category-overlay {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    background-color: #0f0f0f;
+}
+
+.nav-category {
+    display: flex;
+    padding: 0em 2em 1em 2em;
+}
+
+
+.circle {
+    display: inline-block;
+    position: absolute;
+    left: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+/* Mobile navbar */
+.nav-mobile {
+    display: none;
+    flex-direction: row;
+    padding: 1em 1em;
+    z-index: 4;
+    background-color: #0f0f0f;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+
+.nav-overlay {
+    display: none;
+    width: 100%;
+    z-index: 3;
+    position: absolute;
+    background-color: #0f0f0f;
+    justify-content: end;
+    overflow: hidden;
+}
+
+.nav-element-mobile {
+    display: block;
+    text-decoration: none;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    font-weight: 200;
+    font-size: 1.3em;
+    transition: .2s;
+    cursor: pointer;
+    margin-bottom: .8em;
+    text-transform: uppercase;
+}
+
+.hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-height: 0;
+    transition: max-height .5s;
+}
+
+.show {
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    transition: max-height .5s;
+}
+
+.show.nav-overlay {
+    max-height: 420px;
+}
+
+.show.nav-category-overlay {
+    max-height: 50px;
+}
+
+.show::-webkit-scrollbar,
+.hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* hiding/showing navbars */
+@media screen and (max-width: 767px) {
+    .nav-mobile {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .nav-overlay {
+        display: block;
+    }
+}
+
+
+/* Mobile navbar hamburger button */
+.menu-icon {
+    transform: scale(1.2);
+}
+
+.menu-icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.menu-icon .menu-icon__cheeckbox {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+    -webkit-touch-callout: none;
+    position: absolute;
+    opacity: 0;
+}
+
+.menu-icon div {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 24px;
+    height: 12px;
+}
+
+.menu-icon span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 1px;
+    transition: all 0.2s cubic-bezier(0.1, 0.82, 0.76, 0.965);
+}
+
+.menu-icon span:first-of-type {
+    top: 0;
+}
+
+.menu-icon span:last-of-type {
+    bottom: 0;
+}
+
+.menu-icon.active span:first-of-type,
+.menu-icon .menu-icon__cheeckbox:checked+div span:first-of-type {
+    transform: rotate(45deg);
+    top: 5px;
+}
+
+.menu-icon.active span:last-of-type,
+.menu-icon .menu-icon__cheeckbox:checked+div span:last-of-type {
+    transform: rotate(-45deg);
+    bottom: 5px;
+}
+
+.menu-icon:hover .menu-icon__cheeckbox:checked+div span:first-of-type,
+.menu-icon:hover .menu-icon__cheeckbox:checked+div span:last-of-type {
+    width: 24px;
+}
+
+
+
+.darkmode-toggle-wrapper {
+    transform: scale(.9);
+}
+
+.darkmode-toggle-wrapper {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+}
+
+.darkmode-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+
+.moon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    position: absolute;
+    transition: transform .5s ease-in-out;
+
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #0f0f0f;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: left .3s ease-in-out, top .3s ease-in-out;
+
+}
+
+.sun-rays {
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background:
+        linear-gradient(to bottom,
+            currentColor 7px, transparent 0) no-repeat 9.2px -5px/2px 5px,
+        /* top */
+        linear-gradient(to bottom,
+            currentColor 7px, transparent 0) no-repeat 9px 20px/2px 5px,
+        /* bottom */
+        linear-gradient(to bottom,
+            currentColor 7px, transparent 0) no-repeat -5px 9px/5px 2px,
+        /* left */
+        linear-gradient(to bottom,
+            currentColor 7px, transparent 0) no-repeat 20px 9px/5px 2px;
+    /* right */
+    border: 10px solid transparent;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.sun-rays::after,
+.sun-rays::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    border-right: 5px solid;
+    border-left: 5px solid;
+    left: -5px;
+    top: 9px
+}
+
+
+.sun-rays::before {
+    transform: rotate(-45deg)
+}
+
+.sun-rays::after {
+    transform: rotate(45deg)
+}
+
+.sun-rays-hider {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: 6px solid #0f0f0f;
+    border-radius: 50%;
+    transition: width .3s ease-in-out, height .3s ease-in-out;
+}
+
+.darkmode-checkbox:checked~.sun-rays-hider {
+    width: 32px;
+    height: 32px;
+}
+
+.darkmode-checkbox:checked~.moon::after {
+    left: 75%;
+    top: 35%;
+}

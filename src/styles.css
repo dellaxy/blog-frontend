@@ -9,6 +9,18 @@ body {
     font-family: 'Roboto Serif', serif;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(133, 133, 133, 0.5);
+    border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(133, 133, 133, 0.8);
+}
 
 body {
     --primary-bg: rgb(245, 245, 245);
@@ -38,11 +50,6 @@ body.dark {
 
     --skeleton-color: #272727;
     --skeleton-anim: rgba(48, 48, 48, 0.5);
-}
-
-html,
-body {
-    min-height: 100vh;
 }
 
 textarea:focus,

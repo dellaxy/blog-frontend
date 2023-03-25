@@ -11,6 +11,7 @@
     transition: transform .5s;
     overflow: hidden;
     height: 320px;
+    border-radius: .8em;
 }
 
 .thumbnail img {
@@ -146,7 +147,6 @@
 
     .thumbnail {
         height: 220px;
-        border-radius: 1%;
     }
 
 }

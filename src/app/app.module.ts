@@ -17,6 +17,7 @@ import { ArticleComponent } from './article/article.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -28,7 +29,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HomePageComponent,
     PagenotfoundComponent,
     AdminpageComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import { ArticleBody } from '../body';
 import { ArticlePost } from '../articlepost';
 import { HttpClient } from '@angular/common/http';
 import imageCompression from 'browser-image-compression';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-adminpage',
@@ -34,11 +35,12 @@ export class AdminpageComponent {
 
   deleteArticle: Article;
   updateArticle: Article;
-  constructor(private articleservice: ArticleService, private http: HttpClient) {
+  constructor(private articleservice: ArticleService, private http: HttpClient, private nav: NavbarService) {
   }
 
 
   ngOnInit() {
+    this.nav.hide();
     this.getAllCategories();
     this.getAllArticles();
     document.body.classList.toggle('dark', false);

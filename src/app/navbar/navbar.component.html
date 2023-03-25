@@ -1,1 +1,62 @@
-<p>navbar works!</p>
+<header class="nav_bar sticky-top" *ngIf="nav.visible">
+    <nav class="nav">
+        <div class="nav-row">
+            <div class="nav-element-wrapper">
+                <div class="logo nav-element" routerLink="/">
+                    <svg xmlns="logo" viewBox="0 0 75 82" width="32">
+                        <path d="M0 15.6V82l21.4-31.3zM0 15.6L15.6 0l38.3 47.8V8.9L75 1.5v58.9L53.9 82z" fill="white" />
+                    </svg>
+                </div>
+                <div routerLink="/articles/category/" class="nav-element element">all articles</div>
+                <div class="nav-element element category-dropdown" [ngClass]="{'open': showCategories}"
+                    (click)="toggleCategories()">Categories
+                </div>
+            </div>
+            <div class="nav-element-wrapper">
+                <div class="nav-element darkmode-button">
+                    <div class="darkmode-toggle-wrapper">
+                        <input type="checkbox" class="darkmode-checkbox" [checked]="darkMode"
+                            (change)="toggleDarkMode()">
+                        <span class="moon"></span>
+                        <span class="sun-rays"></span>
+                        <span class="sun-rays-hider"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="nav-category-overlay hidden" [ngClass]="{'show': showCategories}">
+        <div class="nav-category">
+            <div *ngFor="let category of categories" routerLink="/articles/category/"
+                [queryParams]="{categoryId: category.id}" class="nav-element">
+                {{category.categoryName}}
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-mobile text-center">
+        <div class="menu-icon" (change)="isMobileNavOpen = !isMobileNavOpen">
+            <input class="menu-icon__cheeckbox" type="checkbox" />
+            <div>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="logo" routerLink="/">
+            <svg xmlns="logo" viewBox="0 0 75 82" width="32">
+                <path d="M0 15.6V82l21.4-31.3zM0 15.6L15.6 0l38.3 47.8V8.9L75 1.5v58.9L53.9 82z" fill="white" />
+            </svg>
+        </div>
+        <div class="darkmode-toggle-wrapper">
+            <input type="checkbox" class="darkmode-checkbox" [checked]="darkMode" (change)="toggleDarkMode()">
+            <span class="moon"></span>
+            <span class="sun-rays"></span>
+            <span class="sun-rays-hider"></span>
+        </div>
+    </div>
+    <div class="nav-overlay text-center hidden" [ngClass]="{'show': isMobileNavOpen}">
+        <div *ngFor="let category of categories" routerLink="/articles/category/"
+            [queryParams]="{categoryId: category.id}" class="nav-element-mobile">
+            {{category.categoryName}}</div>
+    </div>
+</header>
