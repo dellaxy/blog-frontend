@@ -1,7 +1,7 @@
 import { Component, SecurityContext } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from '../article';
-import { ArticleService } from '../article.service';
+import { Article } from '../models/article';
+import { ArticleService } from '../services/article.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({

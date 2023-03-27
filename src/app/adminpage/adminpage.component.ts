@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { Article } from '../article';
-import { ArticleService } from '../article.service';
-import { Category } from '../category';
+import { Article } from '../models/article';
+import { ArticleService } from '../services/article.service';
+import { Category } from '../models/category';
 import { NgForm } from '@angular/forms';
 import { environment } from '../../environments/environment.development';
 import { faTrash, faPencil, faMagnifyingGlass, faPaperclip } from '@fortawesome/free-solid-svg-icons';
-import { ArticleBody } from '../body';
-import { ArticlePost } from '../articlepost';
+import { ArticleBody } from '../models/body';
+import { ArticlePost } from '../models/articlepost';
 import { HttpClient } from '@angular/common/http';
 import imageCompression from 'browser-image-compression';
-import { NavbarService } from '../navbar.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-adminpage',

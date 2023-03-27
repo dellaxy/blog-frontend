@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../category';
-import { ArticleService } from '../article.service';
+import { Category } from '../models/category';
+import { ArticleService } from '../services/article.service';
 import { CookieService } from 'ngx-cookie-service';
-import { NavbarService } from '../navbar.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-navbar',

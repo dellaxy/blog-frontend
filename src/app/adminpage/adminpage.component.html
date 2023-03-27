@@ -168,7 +168,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <editor ngModel="{{updateArticle?.body.content}}" name="content" apiKey="{{tinymceapi}}" [init]="{
+                        <editor ngModel="{{updateArticle?.body?.content}}" name="content" apiKey="{{tinymceapi}}"
+                            [init]="{
                             plugins: 'autolink autoresize textcolor table charmap pagebreak lists advlist',
                             toolbar1: 'fontfamily fontsize | forecolor bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | lineheight indent outdent | charmap pagebreak',
                             toolbar2: 'table tabledelete | tableprops tablerowprops tablecellprops | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol',

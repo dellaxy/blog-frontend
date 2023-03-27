@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Article } from './article';
-import { Category } from './category';
-import { environment } from '../environments/environment';
-import { ArticlePost } from './articlepost';
+import { Article } from '../models/article';
+import { Category } from '../models/category';
+import { environment } from '../../environments/environment';
+import { ArticlePost } from '../models/articlepost';
 
 @Injectable({
   providedIn: 'root'

@@ -135,7 +135,7 @@
 }
 
 .show.nav-category-overlay {
-    max-height: 50px;
+    max-height: 20px;
 }
 
 .show::-webkit-scrollbar,

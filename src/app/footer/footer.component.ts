@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { NavbarService } from '../navbar.service';
+import { NavbarService } from '../services/navbar.service';
 
 @Component({
   selector: 'app-footer',
