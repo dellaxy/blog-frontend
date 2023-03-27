@@ -29,14 +29,17 @@
         <div class="nav-category">
             <div *ngFor="let category of categories" routerLink="/articles/category/"
                 [queryParams]="{categoryId: category.id}" class="nav-element">
-                {{category.categoryName}}
+                <span class="category-name"
+                    [ngStyle]="{'border-color': activeCategory === category.id ? category.categoryColor : ''}">
+                    {{category.categoryName}}
+                </span>
             </div>
         </div>
     </div>
 
     <div class="nav-mobile text-center">
-        <div class="menu-icon" (change)="isMobileNavOpen = !isMobileNavOpen">
-            <input class="menu-icon__cheeckbox" type="checkbox" />
+        <div class="menu-icon" (click)="toggleCategories()">
+            <input class="menu-icon__cheeckbox" type="checkbox" [checked]="showCategories" />
             <div>
                 <span></span>
                 <span></span>
@@ -54,9 +57,13 @@
             <span class="sun-rays-hider"></span>
         </div>
     </div>
-    <div class="nav-overlay text-center hidden" [ngClass]="{'show': isMobileNavOpen}">
+    <div class="nav-overlay text-center hidden" [ngClass]="{'show': showCategories}">
         <div *ngFor="let category of categories" routerLink="/articles/category/"
             [queryParams]="{categoryId: category.id}" class="nav-element-mobile">
-            {{category.categoryName}}</div>
+            <span class="category-name"
+                [ngStyle]="{'border-color': activeCategory === category.id ? category.categoryColor : ''}">
+                {{category.categoryName}}
+            </span>
+        </div>
     </div>
 </header>

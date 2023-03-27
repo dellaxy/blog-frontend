@@ -13,6 +13,7 @@ export class ArticleComponent {
 
   article: Article;
   content: SafeHtml;
+  isLoaded: boolean = false;
 
   constructor(private articleservice: ArticleService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
@@ -25,6 +26,7 @@ export class ArticleComponent {
       (response: Article) => {
         this.article = response;
         this.content = this.sanitizer.bypassSecurityTrustHtml(this.article.body.content);
+        this.isLoaded = true;
       }
     );
   }

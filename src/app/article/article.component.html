@@ -1,4 +1,27 @@
-<div class="container" *ngIf="article">
+<div class="container" *ngIf="!isLoaded">
+    <div class="skeleton-image"></div>
+    <div class="jumbotron jumbotron-fluid pt-5">
+        <div class="container">
+            <div class="skeleton-title">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="skeleton-lead">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <hr>
+            <div class="skeleton-content">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container" *ngIf="isLoaded">
     <img src="assets/images/{{article.image}}" class="img-fluid thumbnail" alt="...">
     <div class="jumbotron jumbotron-fluid pt-5">
         <div class="container">
@@ -7,6 +30,5 @@
             <hr>
         </div>
     </div>
-    <div class="article-body" [innerHTML]="content">
-    </div>
+    <div class="article-body" [innerHTML]="content"></div>
 </div>

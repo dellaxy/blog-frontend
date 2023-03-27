@@ -1,6 +1,5 @@
 .container {
     color: var(--text-color);
-    transition: .3s;
 }
 
 .thumbnail {
@@ -12,14 +11,14 @@
 .jumbotron {
     background-color: var(--secondary-bg);
     padding: 20px 65px;
-    transition: .1s;
+    transition: .3s;
 }
 
 .article-body {
     background-color: var(--secondary-bg);
     padding: 0px 80px;
     padding-bottom: 30px;
-    transition: .1s;
+    transition: .3s;
 }
 
 .title {
@@ -42,5 +41,110 @@
     .thumbnail {
         margin-top: 10px;
         height: 300px;
+    }
+}
+
+/* Skeleton loading */
+.skeleton-image {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    background: var(--skeleton-color);
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.skeleleton-title {
+    margin-top: 2em;
+    width: 100%;
+}
+
+.skeleton-title .line {
+    height: 20px;
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    margin-bottom: 1.5em;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.skeleton-title div:nth-child(1) {
+    width: 90%;
+}
+
+.skeleton-title div:nth-child(2) {
+    width: 80%;
+}
+
+.skeleton-lead {
+    margin: 2.5em 0;
+    width: 100%;
+}
+
+.skeleton-lead .line {
+    height: 14px;
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    margin-bottom: .6em;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.skeleton-lead div:nth-child(1) {
+    width: 90%;
+}
+
+.skeleton-lead div:nth-child(2) {
+    width: 92%;
+}
+
+.skeleton-lead div:nth-child(3) {
+    width: 80%;
+}
+
+.skeleton-content {
+    margin-top: 2em;
+    width: 100%;
+
+}
+
+.skeleton-content .line {
+    background: var(--skeleton-color);
+    border-radius: 2em;
+    margin-bottom: 1.5em;
+    transition: .3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.skeleton-content div:nth-child(1) {
+    height: 300px;
+}
+
+.skeleton-content div:nth-child(2) {
+    height: 500px;
+}
+
+.skeleton-image::before,
+.line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to right, var(--skeleton-color) 0%, var(--skeleton-anim) 20%, var(--skeleton-color) 40%, var(--skeleton-color) 100%);
+    background-repeat: no-repeat;
+    animation: skeleton-wide 2s linear infinite;
+}
+
+@keyframes skeleton-wide {
+    0% {
+        background-position: -20vw 0;
+    }
+
+    100% {
+        background-position: 60vw 0;
     }
 }

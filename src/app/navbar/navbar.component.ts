@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Category } from '../models/category';
 import { ArticleService } from '../services/article.service';
 import { CookieService } from 'ngx-cookie-service';
 import { NavbarService } from '../services/navbar.service';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -13,23 +14,34 @@ export class NavbarComponent {
   categories: Category[];
   darkMode: boolean;
 
-  isMobileNavOpen: boolean = false;
   showCategories: boolean = false;
+  activeCategory: number;
 
-  constructor(private articleservice: ArticleService, private cookieService: CookieService, public nav: NavbarService) {
+  constructor(private articleservice: ArticleService,
+    private cookieService: CookieService,
+    public nav: NavbarService,
+    private router: Router,
+    private route: ActivatedRoute) {
     this.darkMode = cookieService.get('darkMode') === 'true';
     document.body.classList.toggle('dark', this.darkMode);
+
   }
 
   ngOnInit() {
     this.getAllCategories();
+
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.activeCategory = Number(this.route.snapshot.queryParamMap.get('categoryId'));
+        this.showCategories = false;
+      }
+    });
   }
 
   toggleCategories() {
     this.showCategories = !this.showCategories;
-  }
-  toggleMobileNav() {
-    this.isMobileNavOpen = !this.isMobileNavOpen;
+
   }
 
   toggleDarkMode() {
