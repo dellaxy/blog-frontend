@@ -350,5 +350,5 @@
 .category-name {
     padding-bottom: 2px;
     border-bottom: 2px solid transparent;
-    transition: border-color .5s ease-in;
+    transition: border-color .3s ease-in;
 }

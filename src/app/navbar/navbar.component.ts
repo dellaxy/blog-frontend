@@ -29,11 +29,12 @@ export class NavbarComponent {
 
   ngOnInit() {
     this.getAllCategories();
-
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.activeCategory = Number(this.route.snapshot.queryParamMap.get('categoryId'));
+        if (this.route.snapshot.queryParamMap.get('page')) {
+          this.activeCategory = -999;
+        }
         this.showCategories = false;
       }
     });

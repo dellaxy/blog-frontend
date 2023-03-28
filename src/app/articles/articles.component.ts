@@ -27,6 +27,7 @@ export class ArticlesComponent {
     const startingIndex = (this.currentPage - 1) * this.articlesPerPage;
     const endingIndex = this.currentPage * this.articlesPerPage;
     this.route.queryParams.subscribe((params) => {
+      window.scrollTo(0, 0);
       if (params['categoryId']) {
         this.getArticlesByCategory(params['categoryId'], startingIndex, endingIndex);
       } else {

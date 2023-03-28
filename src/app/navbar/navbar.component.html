@@ -58,6 +58,10 @@
         </div>
     </div>
     <div class="nav-overlay text-center hidden" [ngClass]="{'show': showCategories}">
+        <div routerLink="/articles/category/" class="nav-element-mobile" [queryParams]="{page : 'all'}">
+            <span class="category-name" [ngStyle]="{'border-color': activeCategory === (-999) ? 'white' : ''}">all
+                articles</span>
+        </div>
         <div *ngFor="let category of categories" routerLink="/articles/category/"
             [queryParams]="{categoryId: category.id}" class="nav-element-mobile">
             <span class="category-name"
