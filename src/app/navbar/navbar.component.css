@@ -83,12 +83,11 @@
 /* Mobile navbar */
 .nav-mobile {
     display: none;
-    flex-direction: row;
+    grid-template-columns: 40px auto 40px;
+    align-items: center;
     padding: 1em 1em;
     z-index: 4;
     background-color: #0f0f0f;
-    justify-content: space-between;
-    align-items: center;
     position: relative;
 }
 
@@ -146,7 +145,7 @@
 /* hiding/showing navbars */
 @media screen and (max-width: 767px) {
     .nav-mobile {
-        display: flex;
+        display: grid;
     }
 
     .nav {
@@ -166,8 +165,8 @@
 
 .menu-icon {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
 }
 
@@ -302,6 +301,7 @@
     /* right */
     border: 10px solid transparent;
     transition: opacity 0.3s ease-in-out;
+    visibility: visible;
 }
 
 .sun-rays::after,
@@ -315,16 +315,16 @@
     border-right: 5px solid;
     border-left: 5px solid;
     left: -5px;
-    top: 9px
+    top: 9px;
 }
 
 
 .sun-rays::before {
-    transform: rotate(-45deg)
+    transform: rotate(-45deg);
 }
 
 .sun-rays::after {
-    transform: rotate(45deg)
+    transform: rotate(45deg);
 }
 
 .sun-rays-hider {
@@ -339,6 +339,11 @@
 .darkmode-checkbox:checked~.sun-rays-hider {
     width: 32px;
     height: 32px;
+}
+
+.darkmode-checkbox:checked~.sun-rays {
+    transition: .3s;
+    visibility: hidden;
 }
 
 .darkmode-checkbox:checked~.moon::after {
