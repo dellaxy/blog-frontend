@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../models/article';
 import { ArticleService } from '../services/article.service';
-import { Title } from "@angular/platform-browser"
 
 @Component({
   selector: 'app-articles',
@@ -16,11 +15,11 @@ export class ArticlesComponent {
   totalPages: number;
   isLoaded: boolean = false;
 
-  constructor(private articleservice: ArticleService, private route: ActivatedRoute, private titleService: Title) {
-  }
+  constructor(private articleservice: ArticleService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getArticlesPerPage(this.currentPage);
+
   }
 
   getArticlesPerPage(currentPage: number) {
@@ -29,10 +28,6 @@ export class ArticlesComponent {
     const endingIndex = this.currentPage * this.articlesPerPage;
     this.route.queryParams.subscribe((params) => {
       window.scrollTo(0, 0);
-      if (params['categoryName'])
-        this.titleService.setTitle("Coffe Blog - " + params['categoryName']);
-      else
-        this.titleService.setTitle("Coffe Blog - Articles");
       if (params['categoryId']) {
         this.getArticlesByCategory(params['categoryId'], startingIndex, endingIndex);
       } else {

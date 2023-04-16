@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../models/article';
 import { ArticleService } from '../services/article.service';
-import { Title } from "@angular/platform-browser"
+
 
 @Component({
   selector: 'app-homepage',
@@ -17,8 +17,7 @@ export class HomePageComponent implements OnInit {
 
   isLoaded: boolean = false;
 
-  constructor(private articleservice: ArticleService, private route: ActivatedRoute, private titleService: Title) {
-    this.titleService.setTitle("Coffe Blog - Homepage");
+  constructor(private articleservice: ArticleService, private route: ActivatedRoute) {
   }
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
