@@ -3,9 +3,7 @@
         <div class="nav-row">
             <div class="nav-element-wrapper">
                 <div class="logo nav-element" routerLink="/">
-                    <svg xmlns="logo" viewBox="0 0 75 82" width="32">
-                        <path d="M0 15.6V82l21.4-31.3zM0 15.6L15.6 0l38.3 47.8V8.9L75 1.5v58.9L53.9 82z" fill="white" />
-                    </svg>
+                    <img src="assets/logo.svg" alt="">
                 </div>
                 <div routerLink="/articles/category/" class="nav-element element">all articles</div>
                 <div class="nav-element element category-dropdown" [ngClass]="{'open': showCategories}"
@@ -28,7 +26,7 @@
     <div class="nav-category-overlay hidden" [ngClass]="{'show': showCategories}">
         <div class="nav-category">
             <div *ngFor="let category of categories" routerLink="/articles/category/"
-                [queryParams]="{categoryId: category.id}" class="nav-element">
+                [queryParams]="{categoryId: category.id, categoryName: category.categoryName}" class="nav-element">
                 <span class="category-name"
                     [ngStyle]="{'border-color': activeCategory === category.id ? category.categoryColor : ''}">
                     {{category.categoryName}}
@@ -46,9 +44,7 @@
             </div>
         </div>
         <div class="logo" routerLink="/">
-            <svg xmlns="logo" viewBox="0 0 75 82" width="32">
-                <path d="M0 15.6V82l21.4-31.3zM0 15.6L15.6 0l38.3 47.8V8.9L75 1.5v58.9L53.9 82z" fill="white" />
-            </svg>
+            <img src="assets/logo.svg" alt="">
         </div>
         <div class="darkmode-toggle-wrapper">
             <input type="checkbox" class="darkmode-checkbox" [checked]="darkMode" (change)="toggleDarkMode()">
@@ -63,7 +59,7 @@
                 articles</span>
         </div>
         <div *ngFor="let category of categories" routerLink="/articles/category/"
-            [queryParams]="{categoryId: category.id}" class="nav-element-mobile">
+            [queryParams]="{categoryId: category.id, categoryName: category.categoryName}" class="nav-element-mobile">
             <span class="category-name"
                 [ngStyle]="{'border-color': activeCategory === category.id ? category.categoryColor : ''}">
                 {{category.categoryName}}
