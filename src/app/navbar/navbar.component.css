@@ -25,7 +25,7 @@
 }
 
 .nav-element {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 1.1em;
     padding: 0em 1.4em;
     color: white;
@@ -33,6 +33,7 @@
     transition: .3s;
     opacity: 100%;
     text-transform: uppercase;
+
 }
 
 .category-dropdown::after {

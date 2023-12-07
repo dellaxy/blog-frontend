@@ -1,12 +1,14 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
 body {
     overflow: overlay;
     background-color: var(--primary-bg);
     transition: .3s;
     margin: 0;
-    font-family: 'Roboto Serif', serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
